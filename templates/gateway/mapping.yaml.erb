@@ -22,3 +22,27 @@ host: peatio.<%= CONFIG['app']['domain'] %>
 prefix: /
 rewrite: /
 service: peatio:8000
+---
+apiVersion: ambassador/v0
+kind: Mapping
+name: peatio_admin_mapping
+host: www.<%= CONFIG['app']['domain'] %>
+prefix: /admin
+rewrite: ""
+service: peatio:8000
+---
+apiVersion: ambassador/v0
+kind: Mapping
+name: barong_app_mapping
+host: barong.<%= CONFIG['app']['domain'] %>
+prefix: /
+rewrite: /
+service: barong:8001
+---
+apiVersion: ambassador/v0
+kind: Mapping
+name: peatio_assets_mapping
+host: www.<%= CONFIG['app']['domain'] %>
+prefix: /assets/
+rewrite: ""
+service: peatio:8000
