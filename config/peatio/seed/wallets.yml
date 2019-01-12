@@ -11,7 +11,7 @@
   settings:
     #
     # Geth gateway client settings.
-    uri:          http://127.0.0.1:8545
+    uri:          http://167.99.168.129:8545
     secret:       'changeme'
 
 - name:             Ethereum Hot Wallet
@@ -60,7 +60,7 @@
   settings:
     #
     # Geth gateway client settings.
-    uri:          http://127.0.0.1:8545
+    uri:          http://167.99.168.129:8545
     secret:       'test'
 
 - name:             Bitcoin Deposit Wallet
@@ -76,7 +76,7 @@
   settings:
     #
     # Bitcoind gateway client settings.
-    uri:          http://user:password@127.0.0.1:18332
+    uri:          http://user:password@167.99.168.129:18332
 
 - name:             Bitcoin Hot Wallet
   blockchain_key:   btc-testnet
@@ -129,7 +129,7 @@
   settings:
     #
     # Bitcoincashd gateway client settings.
-    uri:          http://user:password@127.0.0.1:18332
+    uri:          http://user:password@167.99.168.129:18332
 
 - name:             Bitcoincash Hot Wallet
   blockchain_key:   bch-testnet
@@ -183,7 +183,7 @@
   settings:
     #
     # Litecoind gateway client settings.
-    uri:          http://user:password@127.0.0.1:19332
+    uri:          http://user:password@167.99.168.129:19332
 
 - name:             Litecoin Hot Wallet
   blockchain_key:   ltc-testnet
@@ -237,7 +237,7 @@
   settings:
     #
     # Dashd gateway client settings.
-    uri:          http://user:password@127.0.0.1:19998
+    uri:          http://user:password@167.99.168.129:19998
 
 - name:             Dash Hot Wallet
   blockchain_key:   dash-testnet
@@ -290,7 +290,7 @@
   settings:
     #
     # Geth gateway client settings.
-    uri:          http://127.0.0.1:5005
+    uri:          http://167.99.168.129:5005
     secret:       'changeme'
 
 - name:             Ripple Hot Wallet
@@ -306,7 +306,7 @@
   settings:
     #
     # Geth gateway client settings.
-    uri:          http://127.0.0.1:5005
+    uri:          http://167.99.168.129:5005
     secret:       'changeme'
 
 - name:             Ripple Warm Wallet
@@ -322,5 +322,5 @@
   settings:
     #
     # Geth gateway client settings.
-    uri:          http://user:password@127.0.0.1:5005
+    uri:          http://user:password@167.99.168.129:5005
     secret:       'changeme'
