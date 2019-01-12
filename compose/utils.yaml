@@ -11,7 +11,7 @@ services:
      - "mail.freeriding.us:167.99.168.129"
     dns:
      - 172.18.0.14
-     - 178.128.2.160
+     - 167.99.168.129
     dns_search:
      - mail.freeriding.us
     labels:
