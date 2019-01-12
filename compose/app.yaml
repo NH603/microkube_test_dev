@@ -11,22 +11,25 @@ services:
     env_file:
       - ../config/peatio.env
     ports:
-      - "178.128.2.160:8000:8000"
-    domainname: peatio.satoshisoup.com
+      - "167.99.168.129:8000:8000"
+    domainname: peatio.freeriding.us
     hostname: peatio
     extra_hosts:
      - "peatio.satoshisoup.com:172.18.0.8"
-     - "peatio.satoshisoup.com:178.128.2.160"
+     - "peatio.satoshisoup.com:167.99.168.129"
     dns:
      - 172.18.0.8
-     - 178.128.2.160
+     - 167.99.168.129
     dns_search:
-     - peatio.satoshisoup.com
+     - peatio.freeriding.us
     volumes:
       - ../config/peatio/seed:/opt/peatio/config/seed
       - ../config/peatio/management_api_v1.yml:/opt/peatio/config/management_api_v1.yml
       - ../config/peatio/plugins.yml:/opt/peatio/config/plugins.yml
-    labels: {}
+    labels:
+      traefik.enable: true
+      traefik.frontend.rule: "PathPrefix:/;Host:peatio.${APP_DOMAIN}"
+      traefik.port: 8000
     command: bash -c "bin/link_config && bundle exec puma --config config/puma.rb"
 
   barong:
@@ -34,18 +37,21 @@ services:
     env_file:
       - ../config/barong.env
     ports:
-      - "178.128.2.160:8001:8001"
-    domainname: barong.satoshisoup.com
+      - "167.99.168.129:8001:8001"
+    domainname: barong.freeriding.us
     hostname: barong
     extra_hosts:
-     - "barong.satoshisoup.com:172.18.0.7"
-     - "barong.satoshisoup.com:178.128.2.160"
+     - "barong.freeriding.us:172.18.0.7"
+     - "barong.freeriding.us:167.99.168.129"
     dns:
      - 172.18.0.7
      - 178.128.2.160
     dns_search:
-     - barong.satoshisoup.com
+     - barong.freeriding.us
     volumes:
       - ../config/secrets:/secrets:ro
       - ../config/barong/seeds.yml:/home/app/config/seeds.yml
-
+    labels:
+      traefik.enable: true
+      traefik.frontend.rule: "PathPrefix:/;Host:barong.${APP_DOMAIN}"
+      traefik.port: 8001
