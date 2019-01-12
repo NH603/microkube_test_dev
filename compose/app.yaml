@@ -15,8 +15,8 @@ services:
     domainname: peatio.freeriding.us
     hostname: peatio
     extra_hosts:
-     - "peatio.satoshisoup.com:172.18.0.8"
-     - "peatio.satoshisoup.com:167.99.168.129"
+     - "peatio.freeriding.us:172.18.0.8"
+     - "peatio.freeriding.us:167.99.168.129"
     dns:
      - 172.18.0.8
      - 167.99.168.129
