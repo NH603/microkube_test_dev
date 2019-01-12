@@ -1,9 +1,9 @@
 app:
-  name: "Mikro"
-  domain: "satoshisoup.com"
+  name: "Microkube"
+  domain: "freeriding.us"
 ssl:
   enabled: true
   email: "zach@satoshisoup.com"
 vendor:
   frontend: "https://github.com/rubykube/mikroapp.git"
-  tower: "https://github.com/openware/tower.git"
+  tower: "https://github.com/rubykube/tower.git"
