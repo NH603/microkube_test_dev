@@ -17,7 +17,7 @@ services:
     env_file:
       - ../config/frontend.env      
     volumes:
-      - ../config/frontend/env.js:/home/node/public/env.js           
+      - ../config/frontend/frontend.js:/home/node/public/env.js           
     labels:
       traefik.enable: true
       traefik.frontend.rule: "PathPrefix:/;Host:www.${APP_DOMAIN}"
