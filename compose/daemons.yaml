@@ -83,16 +83,16 @@ services:
     env_file:
       - ../config/ranger.env
     ports:
-      - "178.128.2.160:8080:8080"
+      - "167.99.168.129:8080:8080"
     domainname: ws.ranger.satoshisoup.com
     extra_hosts:
-     - "ws.ranger.satoshisoup.com:172.18.0.7"
-     - "ws.ranger.satoshisoup.com:178.128.2.160"
+     - "ws.ranger.freeriding.us:172.18.0.7"
+     - "ws.ranger.freeriding.us:167.99.168.129"
     dns:
      - 172.18.0.9
-     - 178.128.2.160
+     - 167.99.168.129
     dns_search:
-     - barong.satoshisoup.com      
+     - freeriding.us  
     labels:
       traefik.enable: true
       traefik.frontend.rule: 'Host: ws.ranger.${APP_DOMAIN}'
