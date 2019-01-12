@@ -84,7 +84,7 @@ services:
       - ../config/ranger.env
     ports:
       - "167.99.168.129:8080:8080"
-    domainname: ws.ranger.satoshisoup.com
+    domainname: ws.ranger.freeriding.us
     extra_hosts:
      - "ws.ranger.freeriding.us:172.18.0.7"
      - "ws.ranger.freeriding.us:167.99.168.129"
