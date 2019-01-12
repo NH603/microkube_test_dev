@@ -13,7 +13,9 @@ services:
       - 172.18.0.10
       - 167.99.168.129
     dns_search:
-      - www.freeriding.us    
+      - www.freeriding.us
+    volumes:
+      - ../config/frontend/env.js:/home/node/public/env.js           
     labels:
       traefik.enable: true
       traefik.frontend.rule: "PathPrefix:/;Host:www.${APP_DOMAIN}"
@@ -33,11 +35,11 @@ services:
       - 167.99.168.129
     dns_search:
       - tower.www.freeriding.us   
-    command: "-d /home/app/build -s 1"
+    #command: "-d /home/app/build -s 1"
     volumes:
-      - ../vendor/tower:/home/app
+      #- ../vendor/tower:/home/app
+      - ../config/frontend/tower.js:/home/app/env.js      
     labels:
       traefik.enable: true
       traefik.frontend.rule: "PathPrefix:/tower;Host:www.${APP_DOMAIN}"
       traefik.port: 8080
-
