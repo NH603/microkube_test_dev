@@ -5,27 +5,42 @@
 # model properties are listed at the very bottom of this models files.
 #
 # Note: email is the only required field here.
-users:
-  - email: admin@barong.io
-    password: 0lDHd9ufs9t@
-    role: admin
-    state: active
-    level: 3
-  - email: zach@satoshisoup.com
-    password: Satoshi1!
-    role: admin
-    state: active
-    level: 3
-  - email: greg@satoshisoup.com
-    password: Satoshi1!
-    role: admin
-    state: active
-    level: 3
-  - email: robert@satoshisoup.com
-    password: Satoshi1!
-    role: member
-    state: active
-    level: 3
+accounts:
+  - account:
+      email: admin@barong.io
+      password: 0lDHd9ufs9t@
+      role: admin
+      state: active
+      level: 3
+  - account:
+      email: zach@satoshisoup.com
+      password: Satoshi1!
+      role: admin
+      state: active
+      level: 3
+    phone:
+      country: "USA"
+      number: "6178502762"
+    profile:
+      dob: "1990-27-02"
+      first_name: "Zach"
+      last_name: "Goldthwaite"
+      address: "123 Main St"
+      postcode: "80205"
+      city: "Denver"
+      country: "USA"      
+  - account:
+      email: greg@satoshisoup.com
+      password: Satoshi1!
+      role: admin
+      state: active
+      level: 3
+  - account:
+      email: robert@satoshisoup.com
+      password: Satoshi1!
+      role: member
+      state: active
+      level: 3      
 
 levels:
   - key: email
@@ -38,3 +53,15 @@ levels:
     value: verified
     description: "User personal documents have been verified"
 
+applications:
+  - name: Peatio
+    #redirect_uri: http://peatio:8000/auth/barong/callback
+    redirect_uri: "http://peatio.freeriding.us:8000/auth/barong/callback"    
+    #redirect_uri: "http://www.wb.local/auth/barong/callback"    
+    skipauth: true
+    #uid: "a68be319fca51caca60eed5711226e568bd1c1d13ff452b945515f1a6ffbaca4"
+    #secret: "ab80e2c843861c4d23e63f5472cd1c9ee6f55e388863e21f22b03a9093977f29"    
+    # uid: setid
+    # scopes:
+    #   - peatio
+    #   - barong
