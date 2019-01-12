@@ -4,16 +4,16 @@ services:
   mailcatcher:
     image: schickling/mailcatcher
     ports:
-     - "178.128.2.160:1080:1080"
-    domainname: mail.satoshisoup.com
+     - "167.99.168.129:1080:1080"
+    domainname: mail.freeriding.us
     extra_hosts:
-     - "mail.satoshisoup.com:172.18.0.14"
-     - "mail.satoshisoup.com:178.128.2.160"
+     - "mail.freeriding.us:172.18.0.14"
+     - "mail.freeriding.us:167.99.168.129"
     dns:
      - 172.18.0.14
      - 178.128.2.160
     dns_search:
-     - mail.satoshisoup.com
+     - mail.freeriding.us
     labels:
       traefik.enable: true
       traefik.frontend.rule: 'Host: mail.${APP_DOMAIN}'
