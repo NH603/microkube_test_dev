@@ -2,7 +2,7 @@
 apiVersion: ambassador/v0
 kind: Mapping
 name: peatio_api_mapping
-host: www.satoshisoup.com
+host: www.freeriding.us
 prefix: /api/v2/peatio
 rewrite: /api/v2/
 service: peatio:8000
@@ -10,7 +10,7 @@ service: peatio:8000
 apiVersion: ambassador/v0
 kind: Mapping
 name: barong_api_mapping
-host: www.satoshisoup.com
+host: www.freeriding.us
 prefix: /api/v2/barong
 rewrite: /api/v2/
 service: barong:8001
@@ -18,7 +18,33 @@ service: barong:8001
 apiVersion: ambassador/v0
 kind: Mapping
 name: peatio_app_mapping
-host: peatio.satoshisoup.com
+host: peatio.freeriding.us
 prefix: /
 rewrite: /
 service: peatio:8000
+---
+apiVersion: ambassador/v0
+kind: Mapping
+name: peatio_admin_mapping
+host: www.freeriding.us
+prefix: /admin
+rewrite: ""
+service: peatio:8000
+---
+apiVersion: ambassador/v0
+kind: Mapping
+name: peatio_assets_mapping
+host: www.freeriding.us
+prefix: /assets/
+rewrite: ""
+#service: peatio.freeriding.us:8000
+service: peatio:8000
+---
+apiVersion: ambassador/v0
+kind: Mapping
+name: barong_app_mapping
+host: barong.freeriding.us:8001
+prefix: /
+rewrite: /
+service: barong.freeriding.us:8001
+#service: barong:8001
