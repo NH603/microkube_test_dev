@@ -13,19 +13,19 @@ services:
       --port=30303
       --rpcapi="db,personal,eth,net,web3"
       --rpccorsdomain="*"
-      --rpcvhosts="eth.satoshisoup.com"
+      --rpcvhosts="eth.freeriding.us"
     ports:
-     - "178.128.2.160:8545:8545"
-    domainname: eth.satoshisoup.com
+     - "167.99.168.129:8545:8545"
+    domainname: eth.freeriding.us
     hostname: cryptonodes
     extra_hosts:
-     - "eth.satoshisoup.com:172.18.0.7"
-     - "eth.satoshisoup.com:178.128.2.160"
+     - "eth.freeriding.us:172.18.0.7"
+     - "eth.freeriding.us:167.99.168.129"
     dns:
      - 172.18.0.6
-     - 178.128.2.160
+     - 167.99.168.129
     dns_search:
-     - eth.satoshisoup.com    
+     - eth.freeriding.us
     volumes:
       - eth-data:/root/.ethereum/
     labels:
@@ -35,4 +35,3 @@ services:
 
 volumes:
   eth-data:
-
