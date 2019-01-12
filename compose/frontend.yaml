@@ -14,6 +14,8 @@ services:
       - 167.99.168.129
     dns_search:
       - www.freeriding.us
+    env_file:
+      - ../config/frontend.env      
     volumes:
       - ../config/frontend/env.js:/home/node/public/env.js           
     labels:
