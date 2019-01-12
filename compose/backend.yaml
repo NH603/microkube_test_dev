@@ -20,17 +20,17 @@ services:
     image: rabbitmq:3.7.6-management
     restart: always
     ports:
-      - "178.128.2.160:15672:15672"     
-    domainname: rabbitmq.satoshisoup.com
+      - "167.99.168.129:15672:15672"     
+    domainname: rabbitmq.freeriding.us
     hostname: rabbitmq
     extra_hosts:
-     - "rabbitmq.satoshisoup.com:172.18.0.4"
-     - "rabbitmq.satoshisoup.com:178.128.2.160"
+     - "rabbitmq.freeriding.us:172.18.0.4"
+     - "rabbitmq.freeriding.us:167.99.168.129"
     dns:
      - 172.18.0.4
-     - 178.128.2.160
+     - 167.99.168.129
     dns_search:
-     - rabbitmq.satoshisoup.com
+     - rabbitmq.freeriding.us
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
     labels:
