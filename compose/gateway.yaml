@@ -12,7 +12,6 @@ services:
       - "167.99.168.129:8877:8877"
     labels:
       traefik.enable: true
-      traefik.frontend.rule: "Host: www.${APP_DOMAIN},peatio.${APP_DOMAIN}; PathPrefix: /api/, /admin, /assets/"
-      #traefik.frontend.rule: "PathPrefix:/api/, /admin, /assets/;Host:www.${APP_DOMAIN},peatio.${APP_DOMAIN}"
+      #traefik.frontend.rule: "Host: www.${APP_DOMAIN},peatio.${APP_DOMAIN}; PathPrefix: /api/, /admin, /assets/"
+      traefik.frontend.rule: "PathPrefix:/api/, /admin, /assets/;Host:www.${APP_DOMAIN},peatio.${APP_DOMAIN}"
       traefik.port: 80
-
