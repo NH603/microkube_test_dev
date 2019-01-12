@@ -4,35 +4,35 @@ services:
   frontend:
     image: "${FRONTEND_IMAGE}"
     ports:
-       - "178.128.2.160:3000:3000"
-    domainname: www.satoshisoup.com
+       - "167.99.168.129:3000:3000"
+    domainname: www.freeriding.us
     extra_hosts:
-      - "www.satoshisoup.com:172.18.0.10"
-      - "www.satoshisoup.com:178.128.2.160"
+      - "www.freeriding.us:172.18.0.10"
+      - "www.freeriding.us:167.99.168.129"
     dns:
       - 172.18.0.10
-      - 178.128.2.160
+      - 167.99.168.129
     dns_search:
-      - www.satoshisoup.com    
+      - www.freeriding.us    
     labels:
       traefik.enable: true
       traefik.frontend.rule: "PathPrefix:/;Host:www.${APP_DOMAIN}"
       traefik.port: 3000
 
   tower:
-    image: quay.io/openware/wio:0.1.0
+    image: "${TOWER_IMAGE}"
     user: "${UID}:${GID}"
     ports:
-      - "178.128.2.160:8080:8080"
-    domainname: tower.satoshisoup.com
+      - "167.99.168.129:8080:8080"
+    domainname: tower.freeriding.us
     extra_hosts:
-      - "tower.satoshisoup.com:172.18.0.11"
-      - "tower.satoshisoup.com:178.128.2.160"
+      - "tower.www.freeriding.us:172.18.0.11"
+      - "tower.www.freeriding.us:167.99.168.129"
     dns:
       - 172.18.0.11
-      - 178.128.2.160
+      - 167.99.168.129
     dns_search:
-      - tower.satoshisoup.com    
+      - tower.www.freeriding.us   
     command: "-d /home/app/build -s 1"
     volumes:
       - ../vendor/tower:/home/app
