@@ -1,5 +1,5 @@
 app:
-  name: "Microkube"
+  name: "microkube"
   domain: "freeriding.us"
 ssl:
   enabled: true
