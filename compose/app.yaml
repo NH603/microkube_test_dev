@@ -1,0 +1,51 @@
+version: '3.6'
+
+services:
+  peatio:
+    image: "${PEATIO_IMAGE}"
+    depends_on:
+      - proxy
+      - db
+      - redis
+      - rabbitmq
+    env_file:
+      - ../config/peatio.env
+    ports:
+      - "178.128.2.160:8000:8000"
+    domainname: peatio.satoshisoup.com
+    hostname: peatio
+    extra_hosts:
+     - "peatio.satoshisoup.com:172.18.0.8"
+     - "peatio.satoshisoup.com:178.128.2.160"
+    dns:
+     - 172.18.0.8
+     - 178.128.2.160
+    dns_search:
+     - peatio.satoshisoup.com
+    volumes:
+      - ../config/peatio/seed:/opt/peatio/config/seed
+      - ../config/peatio/management_api_v1.yml:/opt/peatio/config/management_api_v1.yml
+      - ../config/peatio/plugins.yml:/opt/peatio/config/plugins.yml
+    labels: {}
+    command: bash -c "bin/link_config && bundle exec puma --config config/puma.rb"
+
+  barong:
+    image: "${BARONG_IMAGE}"
+    env_file:
+      - ../config/barong.env
+    ports:
+      - "178.128.2.160:8001:8001"
+    domainname: barong.satoshisoup.com
+    hostname: barong
+    extra_hosts:
+     - "barong.satoshisoup.com:172.18.0.7"
+     - "barong.satoshisoup.com:178.128.2.160"
+    dns:
+     - 172.18.0.7
+     - 178.128.2.160
+    dns_search:
+     - barong.satoshisoup.com
+    volumes:
+      - ../config/secrets:/secrets:ro
+      - ../config/barong/seeds.yml:/home/app/config/seeds.yml
+

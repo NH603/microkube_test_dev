@@ -1,0 +1,46 @@
+# Be sure to restart your server when you modify this file.
+#
+# This file keeps all the security configuration variables for «Management API v1».
+#
+# Keeps all the public keys used to validate signatures.
+# All values must be presented in PEM format and be URL-safe Base64 encoded.
+#
+keychain:
+  barong:
+    algorithm: RS256
+    value: LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF3ajRrK21sS2tPTW5NUWJobVZyVQpveE4yWmxCN1RoRlIzWFNPTXc2bWJTOXlEU2k4aEV3OGFmNVFMTEJ1V2IwMUR6Smp3UEphNTdqRjBjVzVobTVECkVNelprL1REZFBBVWIrOGRvbTFWSmxKSTlUcG1pWTVadVNqMndvVk1ZczVXdjlBdlhsRGt2K2MxVFF6UGllRGkKdEZmNm83aFhxVmtYVTcra1ZVMGwxYXNVa3R0RmpiMC9FWmhwVC9aZG5mSU5ZMlNLaEpMZXZ3SXVFSmROMnlBVAo1S2FSUHZ3NlJkS1BRNFBnM2JpajcwUWQyVUk1eVpKd1JnczU5ang3cnEydWhRSGY1SlNoWlJYeUFXNjBkMWowCm44Q25BNUF6SEovbDZtMDNQbnVFczNoVjhqMXExWTZXQjVVR096VldSUUcrc1R1M0g2Wk1KOGNlNzhiZlJxSG0KTVFJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg==
+#
+# Keeps all the JWT verification options.
+# The documentation is available at https://github.com/jwt/ruby-jwt#support-for-reserved-claim-names.
+# Check lib/jwt/default_options.rb for the default options.
+#
+jwt: {}
+
+#
+# Keep all the API security scopes.
+#
+# The API security scope consists of scope name, list of permitted and mandatory signers.
+# The scope name is associated with API actions. For example, write_deposits is associated with
+# ability to create deposits and accept them. The scopes which have «write» in the name are supposed
+# to be dangerous so they must require more signatures then read-only scopes
+#
+# Each scope must include list of permitted and mandatory signers.
+# Peatio validates JWT signatures against permitted keys and doesn't trust
+# JWTs which don't include signatures from all mandatory signers.
+#
+scopes:
+  read_deposits:
+    permitted_signers: ['barong']
+    mandatory_signers: ['barong']
+  write_deposits:
+    permitted_signers: ['barong']
+    mandatory_signers: ['barong']
+  read_withdraws:
+    permitted_signers: ['barong']
+    mandatory_signers: ['barong']
+  write_withdraws:
+    permitted_signers: ['barong']
+    mandatory_signers: ['barong']
+  read_accounts:
+    permitted_signers: ['barong']
+    mandatory_signers: ['barong']

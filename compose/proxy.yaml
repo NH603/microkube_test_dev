@@ -1,0 +1,36 @@
+version: '3.6'
+
+services:
+  proxy:
+    image: traefik
+    ports:
+      - "178.128.2.160:80:80"
+      - "178.128.2.160:443:443"
+    domainname: monitor.satoshisoup.com
+    extra_hosts:
+     - "monitor.satoshisoup.com:172.18.0.13"
+     - "monitor.satoshisoup.com:178.128.2.160"
+    dns:
+     - 172.18.0.13
+     - 178.128.2.160
+    dns_search:
+     - monitor.satoshisoup.com
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../config/traefik.toml:/etc/traefik/traefik.toml:ro
+      - ../config/acme.json:/acme.json
+    networks:
+      default:
+        aliases:
+          - www.${APP_DOMAIN}
+          - peatio.${APP_DOMAIN}
+          - barong.${APP_DOMAIN}
+          - ws.ranger.${APP_DOMAIN}
+          - eth.${APP_DOMAIN}
+          - tower.${APP_DOMAIN}
+          - monitor.${APP_DOMAIN}
+    labels:
+      traefik.enable: true
+      traefik.frontend.rule: 'Host: monitor.${APP_DOMAIN}'
+      traefik.port: 8080
+

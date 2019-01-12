@@ -1,0 +1,21 @@
+version: '3.6'
+
+services:
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+     - "178.128.2.160:1080:1080"
+    domainname: mail.satoshisoup.com
+    extra_hosts:
+     - "mail.satoshisoup.com:172.18.0.14"
+     - "mail.satoshisoup.com:178.128.2.160"
+    dns:
+     - 172.18.0.14
+     - 178.128.2.160
+    dns_search:
+     - mail.satoshisoup.com
+    labels:
+      traefik.enable: true
+      traefik.frontend.rule: 'Host: mail.${APP_DOMAIN}'
+      traefik.port: 1080
+

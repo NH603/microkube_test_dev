@@ -1,0 +1,38 @@
+version: '3.6'
+
+services:
+  geth:
+    image: ethereum/client-go:stable
+    #restart: always
+    command: |
+      --syncmode=full
+      --rinkeby
+      --rpc
+      --rpcaddr=178.128.2.160
+      --rpcport=8545
+      --port=30303
+      --rpcapi="db,personal,eth,net,web3"
+      --rpccorsdomain="*"
+      --rpcvhosts="eth.satoshisoup.com"
+    ports:
+     - "178.128.2.160:8545:8545"
+    domainname: eth.satoshisoup.com
+    hostname: cryptonodes
+    extra_hosts:
+     - "eth.satoshisoup.com:172.18.0.7"
+     - "eth.satoshisoup.com:178.128.2.160"
+    dns:
+     - 172.18.0.6
+     - 178.128.2.160
+    dns_search:
+     - eth.satoshisoup.com    
+    volumes:
+      - eth-data:/root/.ethereum/
+    labels:
+      traefik.enable: true
+      traefik.frontend.rule: 'Host: eth.${APP_DOMAIN}'
+      traefik.port: 8545
+
+volumes:
+  eth-data:
+

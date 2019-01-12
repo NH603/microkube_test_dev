@@ -1,0 +1,43 @@
+version: '3.6'
+
+services:
+  frontend:
+    image: "${FRONTEND_IMAGE}"
+    ports:
+       - "178.128.2.160:3000:3000"
+    domainname: www.satoshisoup.com
+    extra_hosts:
+      - "www.satoshisoup.com:172.18.0.10"
+      - "www.satoshisoup.com:178.128.2.160"
+    dns:
+      - 172.18.0.10
+      - 178.128.2.160
+    dns_search:
+      - www.satoshisoup.com    
+    labels:
+      traefik.enable: true
+      traefik.frontend.rule: "PathPrefix:/;Host:www.${APP_DOMAIN}"
+      traefik.port: 3000
+
+  tower:
+    image: quay.io/openware/wio:0.1.0
+    user: "${UID}:${GID}"
+    ports:
+      - "178.128.2.160:8080:8080"
+    domainname: tower.satoshisoup.com
+    extra_hosts:
+      - "tower.satoshisoup.com:172.18.0.11"
+      - "tower.satoshisoup.com:178.128.2.160"
+    dns:
+      - 172.18.0.11
+      - 178.128.2.160
+    dns_search:
+      - tower.satoshisoup.com    
+    command: "-d /home/app/build -s 1"
+    volumes:
+      - ../vendor/tower:/home/app
+    labels:
+      traefik.enable: true
+      traefik.frontend.rule: "PathPrefix:/tower;Host:www.${APP_DOMAIN}"
+      traefik.port: 8080
+

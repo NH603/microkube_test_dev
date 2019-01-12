@@ -1,0 +1,28 @@
+language: ruby
+bundler_args: --without development
+cache: bundler
+before_install:
+  - gem install bundler
+before_script: "./bin/ci/before_build"
+script: "bundle exec rake integration_without_recovery"
+rvm:
+  - ruby-head
+  - "2.5.1"
+  - "2.4.2"
+  - "2.3.5"
+  - "2.2.8"
+notifications:
+  email: michael@rabbitmq.com
+services:
+  - rabbitmq
+branches:
+  only:
+    - master
+    - 2.9.x-stable
+    - 2.8.x-stable
+env:
+  - CI=true
+matrix:
+  allow_failures:
+    rvm:
+      - ruby-head
